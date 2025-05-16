@@ -13,6 +13,6 @@ document.addEventListener("DOMContentLoaded", function(){
         else{
             text = text + e.key;
         }
-        textruta.innerText = text;
+        textruta.innerHTML = text;
     };
 });
