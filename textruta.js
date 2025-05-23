@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 }
             }
         }
-        else{
+        else if(e.key == 'q' || e.key == 'w' || e.key == 'e' || e.key == 'r' || e.key == 't' || e.key == 'y' || e.key == 'u' || e.key == 'i' || e.key == 'o' || e.key == 'p' || e.key == 'å' || e.key == 'a' || e.key == 's' || e.key == 'd' || e.key == 'f' || e.key == 'g' || e.key == 'h' || e.key == 'j' || e.key == 'k' || e.key == 'l' || e.key == 'ö' || e.key == 'ä' || e.key == 'z' || e.key == 'x' || e.key == 'c' || e.key == 'v' || e.key == 'b' || e.key == 'n' || e.key == 'm' || e.key == '1' || e.key == '2' || e.key == '3' || e.key == '4' || e.key == '5' || e.key == '6' || e.key == '7' || e.key == '8' || e.key == '9' || e.key == '0' || e.key == '!' || e.key == '?' || e.key == ',' || e.key == '.'){
             spanContent = spanContent + e.key;
         }
         if(e.key == ' '){
@@ -44,14 +44,24 @@ document.addEventListener("DOMContentLoaded", function(){
                 console.log(spacePos);
             }
             else{
-                spacePos = text.length;
-                if(spanContent != "röd "){
-                    text = text + "<span>" + spanContent + "</span>";
+                if(spanContent.trim().toLowerCase() != "röd"){
+                    console.log(spanContent.substring(1, spanContent.length))
+                    if(spanContent.lastIndexOf(' ') != -1){
+                        text = text + " <span>" + spanContent.substring(1, spanContent.length) + "</span>";
+                    }
+                    else{
+                        text = text + "<span>" + spanContent + "</span>";
+                    }
                 }
                 else{
-                    text = text + "<span id='röd'>" + spanContent + "</span>"
+                    if(spanContent.lastIndexOf(' ') != -1){
+                        text = text + " <span id='röd'>" + spanContent.substring(1, spanContent.length) + "</span>";
+                    }
+                    else{
+                        text = text + "<span id='röd'>" + spanContent + "</span>"
+                    }
                 }
-                spanContent = "";
+                spanContent = " ";
             }
         }
         textruta.innerHTML = text + spanContent;
